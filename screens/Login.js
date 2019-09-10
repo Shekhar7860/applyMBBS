@@ -1,7 +1,9 @@
 import React, {Component} from 'react';
-import {Platform, Text, View, TextInput, Image, ImageBackground, TouchableOpacity, StatusBar, ScrollView, TouchableNativeFeedback} from 'react-native';
+import {Platform, Text, View, TextInput, Image,KeyboardAvoidingView,  ImageBackground, TouchableOpacity, StatusBar, ScrollView, TouchableNativeFeedback} from 'react-native';
 import styles from './styles.js';
 import firebase from 'react-native-firebase';
+const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0
+import Icon from 'react-native-vector-icons/FontAwesome';
 const Banner = firebase.admob.Banner;
 const AdRequest = firebase.admob.AdRequest;
 const request = new AdRequest();
@@ -78,6 +80,10 @@ export default class Login extends Component {
     this.props.navigation.pop()
    }
 
+   forgotpassword = () => 
+   {
+    this.props.navigation.navigate('forgot')
+   }
    submit = () => {
        if (this.state.email && this.state.password)
        {
@@ -91,7 +97,9 @@ export default class Login extends Component {
   render() {
     return (
     
-      <View style={{flex:1}}>
+    
+      <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={keyboardVerticalOffset}>
+    
          <View style={styles.toolbar}>
          <TouchableOpacity onPress={() => this.goBack()}>
                     <Image style={{width:30,marginLeft:5,  height:30}}source={require('../images/back.png')}></Image>
@@ -99,33 +107,43 @@ export default class Login extends Component {
                     <Text style={styles.toolbarTitle}>Login</Text>
                     <Text style={styles.toolbarButton}></Text>
                 </View>
-                <View style={{alignItems:'center', marginTop:20}}>
-
+              
+                <Image style={{width:250, height:150, marginLeft:5, marginTop:20, alignSelf:'center'}}source={require('../images/splash2.png')}></Image>
+                
+                <View style={{ marginTop:20, alignItems:'center' }}>
+                <View style={{flexDirection:'row',  borderWidth : 1, width:'85%', backgroundColor : '#ffffff', borderRadius:100}}>
+                <Image style={{width:25,marginLeft:20, marginTop:15,  height:25}}source={require('../images/email1.png')}></Image>
                  <TextInput style={styles.inputBox}
                 onChangeText={(email) => this.setState({email})}
                 underlineColorAndroid='rgba(0,0,0,0)' 
                 placeholder="Email Address"
-                placeholderTextColor = "#002f6c"
+                placeholderTextColor = "#95A5A6"
                 selectionColor="#fff"
                 keyboardType="email-address"
                 onSubmitEditing={()=> this.password.focus()}/>
+                </View>
 
-                 <TextInput style={styles.inputBox}
+                
+
+     <View style={{flexDirection:'row',  borderWidth : 1, width:'85%', backgroundColor : '#ffffff', borderRadius:100, marginTop:20}}>
+                <Image style={{width:25,marginLeft:20, marginTop:15,  height:25}}source={require('../images/password.png')}></Image>
+                <TextInput style={styles.inputBox}
                 onChangeText={(password) => this.setState({password})}
                 underlineColorAndroid='rgba(0,0,0,0)' 
                 placeholder="Password"
-                placeholderTextColor = "#002f6c"
+                placeholderTextColor = "#95A5A6"
                 selectionColor="#fff"
                 keyboardType="email-address"
                 onSubmitEditing={()=> this.password.focus()}/>
-
-    
+                </View>
 
                   
  
                 <TouchableOpacity style={styles.button}> 
                     <Text style={styles.buttonText} onPress={() => this.submit()}>Submit</Text>
                 </TouchableOpacity>
+
+                 <TouchableOpacity  onPress={() => this.forgotpassword()}><Text style={{fontSize:20, color:'#588029'}}>Forgot Password ?</Text></TouchableOpacity>
                 </View>
 
  <View style={styles.footer}>
@@ -139,8 +157,8 @@ export default class Login extends Component {
   }} />
   </View>
            
-      
-      </View>
+
+      </KeyboardAvoidingView>
       
     );
 }

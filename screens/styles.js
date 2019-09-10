@@ -236,20 +236,21 @@ container1: {
 },
 inputBox: {
   width: 300,
-  backgroundColor: '#eeeeee', 
+ 
   borderRadius: 25,
   paddingHorizontal: 16,
   fontSize: 16,
-  borderWidth : 1, 
   color: '#95a5a6',
-  marginVertical: 10
+  marginVertical: 5
 },
 button: {
   width: 300,
   backgroundColor: '#588029',
   borderRadius: 25,
   marginVertical: 10,
-  paddingVertical: 12
+  paddingVertical: 12,
+  marginTop:20,
+  height:50
 },
 buttonText: {
   fontSize: 16,

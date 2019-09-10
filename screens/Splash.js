@@ -11,7 +11,7 @@ export default class Splash extends Component {
 
   // going to next screen
   goToLoginScreen = () =>{
-    setTimeout(() => {this.props.navigation.navigate('Welcome') }, 3000)
+    setTimeout(() => {this.props.navigation.navigate('Slider') }, 3000)
   }
   
   render() {

@@ -20,6 +20,7 @@ import SignUp from './screens/SignUp'
 import Login from './screens/Login'
 import Apply from './screens/Apply'
 import CollegeFees from './screens/CollegeFees'
+import Slider from './screens/Slider'
 import Welcome from './screens/Welcome'
 import Edit from './screens/Edit'
 import Splash from './screens/Splash'
@@ -28,7 +29,8 @@ const AppNavigator = StackNavigator(
   {
     Splash: { screen: Splash
   },
-  
+   Slider : { screen: Slider
+  },
     SignUp: { screen: SignUp
   },
     Welcome: { screen: Welcome
